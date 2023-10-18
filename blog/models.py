@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
-from django.conf import settings
+from django.contrib.auth.models import User
 from datetime import datetime
 
 
@@ -24,9 +24,8 @@ class Post(models.Model):
     title = models.CharField(max_length=255,
                              validators=[MinLengthValidator(2, "Title must be greater than 2 characters")])
     content = models.TextField()
-    # author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-    #                            related_name='favs_users')
-    # image = models.BinaryField(null=True, editable=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    image = models.ImageField(upload_to ='blog/media/% Y/% m/% d/')
     # category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     counted_views = models.IntegerField(null=True, default=0)

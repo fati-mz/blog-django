@@ -27,8 +27,8 @@ def blog_home(request):
     return render(request, 'blog\Blog_home.html', context)
 
 
-def blog_single(request,id):
-    post = get_object_or_404(Post,pk=id)
+def blog_single(request,p_id):
+    post = get_object_or_404(Post,pk=p_id,status=1)
     post.counted_views+=1
     post.save()
     context = {'post': post}
