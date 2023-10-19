@@ -25,7 +25,7 @@ class Post(models.Model):
                              validators=[MinLengthValidator(2, "Title must be greater than 2 characters")])
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to ='blog/media/% Y/% m/% d/')
+    image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
     # category = models.ForeignKey(Category, on_delete=models.CASCADE)
     # tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     counted_views = models.IntegerField(null=True, default=0)

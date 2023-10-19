@@ -102,10 +102,9 @@
 							<li><a href="#">Lifestyle</a></li>
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
-									class="lnr lnr-user"></span></p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_at|date:'d M, Y'}}</a> <span
-									class="lnr lnr-calendar-full"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span></p>
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_at|date:'d M, Y'}}</a> <span class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
 									class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
@@ -114,7 +113,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+							<img class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:blog_single' p_id=post.id %}">
 							<h3>{{post.title}}</h3>
