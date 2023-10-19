@@ -29,8 +29,10 @@ def blog_home(request):
 
 def blog_single(request,p_id):
     post = get_object_or_404(Post,pk=p_id,status=1)
+    next_post = Post.objects.filter(pk__gt=post.id).order_by('id').first()
+    pre_post = Post.objects.filter(pk__lt=post.id).order_by('id').last()
     post.counted_views+=1
     post.save()
-    context = {'post': post}
+    context = {'post': post,'next_post': next_post, 'pre_post': pre_post}
     
     return render(request, 'blog\Blog_single.html', context)
