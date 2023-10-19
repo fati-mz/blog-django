@@ -26,7 +26,7 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ManyToManyField(Category)
     # tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     counted_views = models.IntegerField(null=True, default=0)
     status = models.BooleanField(default=False,)
