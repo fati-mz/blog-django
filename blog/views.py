@@ -21,9 +21,11 @@ def contact(request):
     return render(request, 'blog/contact.html', context)
 
 
-def blog_home(request):
-    post = Post.objects.filter(status=1)
-    context = {'posts': post}
+def blog_home(request,category_name=None):
+    posts = Post.objects.filter(status=1)
+    if category_name:
+            posts = posts.filter(category__name=category_name)
+    context = {'posts': posts}
     return render(request, 'blog/Blog_home.html', context)
 
 
