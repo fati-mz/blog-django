@@ -40,3 +40,10 @@ def blog_single(request,p_id):
     context = {'post': post,'next_post': next_post, 'pre_post': pre_post}
     
     return render(request, 'blog/Blog_single.html', context)
+
+def blog_search(request):
+    if request.method=='GET':
+        if s:= request.GET.get('s'):
+            posts = Post.objects.filter(status=1, title__contains=s)
+    context = {'posts': posts}
+    return render(request, 'blog/Blog_home.html',context)
