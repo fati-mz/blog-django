@@ -6,7 +6,7 @@ register = template.Library()
 
 
 @register.inclusion_tag('blog/Blog_latest_post.html')
-def latestposts(arg=5):
+def latestposts(arg):
     posts=Post.objects.filter(status=1).order_by('-published_at')[:arg]
     return {'posts':posts}
 

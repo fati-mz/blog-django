@@ -21,10 +21,12 @@ def contact(request):
     return render(request, 'blog/contact.html', context)
 
 
-def blog_home(request,category_name=None):
+def blog_home(request,**kwargs):
     posts = Post.objects.filter(status=1)
-    if category_name:
-            posts = posts.filter(category__name=category_name)
+    if kwargs.get('category_name')!=None:
+            posts = posts.filter(category__name=kwargs['category_name'])
+    if kwargs.get('author_username') !=None:
+            posts = posts.filter(author__username=kwargs['author_username'])
     context = {'posts': posts}
     return render(request, 'blog/Blog_home.html', context)
 
