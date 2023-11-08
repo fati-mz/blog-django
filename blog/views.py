@@ -4,24 +4,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Post
 
 
-def index(request):
-    post = Post.objects.filter(published_at__lte=timezone.now())
-    context = {'posts': post}
-    return render(request, 'blog/index.html', context)
-
-
-def about(request):
-    post = Post.objects.filter(status=1)
-    context = {'posts': post}
-    return render(request, 'blog/About.html', context)
-
-
-def contact(request):
-    post = Post.objects.filter(status=1)
-    context = {'posts': post}
-    return render(request, 'blog/contact.html', context)
-
-
 def blog_home(request, **kwargs):
     posts = Post.objects.filter(status=1)
 
