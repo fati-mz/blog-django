@@ -5,11 +5,11 @@ from django.contrib import messages
 
 
 def index_view(request):
-    return render(request, 'blog/index.html')
+    return render(request, 'home/index.html')
 
 
 def about_view(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'home/about.html')
 
 
 def contact_view(request):
@@ -23,7 +23,7 @@ def contact_view(request):
             messages.add_message(request, messages.ERROR,
                                  'your ticket didnt submited')
     form = ContactForm()
-    return render(request, 'blog/contact.html', {'form': form})
+    return render(request, 'home/contact.html', {'form': form})
 
 
 def newsletter_view(request):
@@ -31,4 +31,4 @@ def newsletter_view(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request, 'blog/index.html')
+    return render(request, 'home/index.html')

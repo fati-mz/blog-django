@@ -7,21 +7,16 @@ register = template.Library()
 
 @register.inclusion_tag('blog/Blog_latest_post.html')
 def latestposts(arg):
-    posts=Post.objects.filter(status=1).order_by('-published_at')[:arg]
-    return {'posts':posts}
+    posts = Post.objects.filter(status=1).order_by('-published_at')[:arg]
+    return {'posts': posts}
 
 
 @register.inclusion_tag('blog/Blog_post_category.html')
 def postcategories():
-    posts=Post.objects.filter(status=1)
-    categories=Category.objects.all()
-    cat_dict={}
+    posts = Post.objects.filter(status=1)
+    categories = Category.objects.all()
+    cat_dict = {}
     for name in categories:
-        cat_dict[name]=posts.filter(category=name).count()
+        cat_dict[name] = posts.filter(category=name).count()
 
-    return {'categories':cat_dict}
-
-@register.inclusion_tag('blog/index_latest_post.html')
-def index_latestposts(arg=6):
-    posts=Post.objects.filter(status=1).order_by('-published_at')[:arg]
-    return {'posts':posts}
+    return {'categories': cat_dict}

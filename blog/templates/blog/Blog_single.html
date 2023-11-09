@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'home/base.html' %}
 {% load static %}
 {% load blog_tags%}
 {% block content %}
@@ -11,8 +11,8 @@
 				<h1 class="text-white">
 					{{post.title}}
 				</h1>
-				<p class="text-white link-nav"><a href="{% url 'blog:index' %}">Home </a> <span
-						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:blog_home' %}">Blog </a> <span
+				<p class="text-white link-nav"><a href="{% url 'home:index' %}">Home </a> <span
+						class="lnr lnr-arrow-right"></span><a href="{% url 'blog:index' %}">Blog </a> <span
 						class="lnr lnr-arrow-right"></span>{{post.title}}</a></p>
 			</div>
 		</div>
