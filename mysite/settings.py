@@ -49,13 +49,19 @@ INSTALLED_APPS = [
 
 
     'django_extensions',
+    'robots',
 
     'blog',
     'home',
 
 ]
 
+# sites framwork
 SITE_ID = 1
+
+# robots
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
