@@ -6,9 +6,9 @@ from .models import Contact, Newsletter
 class ContactAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     empty_value_display = '-empty-'
-    list_display = ('name', 'email', 'subject', 'created_at')
+    list_display = ('name', 'email', 'subject', 'message', 'created_at')
     list_filter = ('email',)
-    search_fields = ['title', 'message']
+    search_fields = [ 'message']
 
 
 admin.site.register(Newsletter)
