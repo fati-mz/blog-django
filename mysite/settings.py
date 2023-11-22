@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'robots',
     'debug_toolbar',
     'taggit',
+    'django_summernote',
 
     'blog',
     'home',
@@ -64,6 +65,9 @@ SITE_ID = 1
 # robots
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SITEMAP = False
+
+# Show summernote with Bootstrap4
+SUMMERNOTE_THEME = 'bs4'  
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
