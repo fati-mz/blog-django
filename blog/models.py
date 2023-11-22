@@ -3,7 +3,7 @@ from django.core.validators import MinLengthValidator
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.urls import reverse
-
+from taggit.managers import TaggableManager
 
 class Category(models.Model):
     name = models.CharField(max_length=127,
@@ -28,7 +28,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='blog/', default='blog/default.jpg')
     category = models.ManyToManyField(Category)
-    # tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    tags = TaggableManager()
     counted_views = models.IntegerField(null=True, default=0)
     status = models.BooleanField(default=False,)
     published_at = models.DateTimeField(null=True)
