@@ -5,6 +5,7 @@ from datetime import datetime
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
+
 class Category(models.Model):
     name = models.CharField(max_length=127,
                             validators=[MinLengthValidator(3, "Name must be greater than 2 characters")])
@@ -36,7 +37,7 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['-created_at']
         verbose_name = 'پست'
         verbose_name_plural = 'پست ها'
 
@@ -45,3 +46,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:blog_single', kwargs={'p_id': self.id})
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    aproved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
