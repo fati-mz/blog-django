@@ -45,11 +45,16 @@ def blog_single(request, p_id):
     pre_post = Post.objects.filter(pk__lt=post.id).order_by('id').last()
     post.counted_views += 1
     post.save()
-    comments = Comment.objects.filter(
-        post=post.id, aproved=True).order_by('-created_at')
-    context = {'post': post, 'next_post': next_post,
-               'pre_post': pre_post, 'comments': comments, 'form': form}
-    return render(request, 'blog/Blog_single.html', context)
+    if not post.login_require:
+        comments = Comment.objects.filter(
+            post=post.id, aproved=True).order_by('-created_at')
+        form = CommentForm(request.POST)
+        context = {'post': post, 'next_post': next_post,
+                   'pre_post': pre_post, 'comments': comments, 'form': form}
+        return render(request, 'blog/Blog_single.html', context)
+    else:
+        return render(request, 'accounts/login.html')
+
 
 
 def blog_search(request):
