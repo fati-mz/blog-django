@@ -3,10 +3,11 @@
 import os
 import sys
 
-
+# new common for runserver
+# python3 manage.py runserver --settings=mysite.setting.dev
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.setting.dev')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
